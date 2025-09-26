@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h3>All Appointments</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Patient</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.doctor.name }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.patient.name }}</td>  <!-- Adjust according to your model -->
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No appointments found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_appointment' %}" class="btn btn-primary">Add New Appointment</a>
+</div>
+{% endblock %}

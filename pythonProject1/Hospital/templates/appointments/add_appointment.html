@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>Add Appointment</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="doctor">Select Doctor</label>
+            <select class="form-control" id="doctor" name="doctor_id" required>
+                <option value="">Choose...</option>
+                {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">{{ doctor.doctor_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="patient-name">Patient Name</label>
+            <input type="text" class="form-control" id="patient-name" name="patient_name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="appointment-date">Appointment Date</label>
+            <input type="datetime-local" class="form-control" id="appointment-date" name="appointment_date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="reason">Reason for Appointment</label>
+            <textarea class="form-control" id="reason" name="reason" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Book Appointment</button>
+    </form>
+</div>
+{% endblock %}

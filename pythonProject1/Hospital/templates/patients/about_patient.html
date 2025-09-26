@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h3 class="block-title">Patient Details</h3>
+    <div class="card proclinic-box-shadow mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ patient.patient_Name }}</h5>
+            <p><strong>Date of Birth:</strong> {{ patient.date_of_birth }}</p>
+            <p><strong>Age:</strong> {{ patient.age }}</p>
+            <p><strong>Phone:</strong> {{ patient.phone }}</p>
+            <p><strong>Email:</strong> {{ patient.email }}</p>
+            <p><strong>Gender:</strong> {{ patient.gender }}</p>
+            <p><strong>Address:</strong> {{ patient.address }}</p>
+        </div>
+    </div>
+    <a href="{% url 'all_patients' %}" class="btn btn-secondary">Back to All Patients</a>
+</div>
+{% endblock %}
